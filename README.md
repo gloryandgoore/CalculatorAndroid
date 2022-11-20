@@ -11,10 +11,10 @@ A simple calculator application built with Java in Android Studio. Calculator st
 ## Screenshots
 
 Main
-!["Main"](https://github.com/gloryandgoore/)
+!["Main"](https://github.com/gloryandgoore/CalculatorAndroid/blob/main/calulatorAndroid.png)
 
 Standard Mode
-!["Standard Mode"](https://github.com/gloryandgoore/)
+!["Standard Mode"](https://github.com/gloryandgoore/CalculatorAndroid/blob/main/CalculatorAndroid-standard.png)
 
 Advance Mode
-!["Advance Mode"](https://github.com/gloryandgoore/)
+!["Advance Mode"](https://github.com/gloryandgoore/CalculatorAndroid/blob/main/CalculatorAndroid-Advance.png)
