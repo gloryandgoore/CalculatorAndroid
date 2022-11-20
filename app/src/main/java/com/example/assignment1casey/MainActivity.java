@@ -12,6 +12,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //new calculator function
     Calculator obj = new Calculator();
     int mode = 0;
 
@@ -48,9 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         assignId(button7,R.id.button_7);
         assignId(button8,R.id.button_8);
         assignId(button9,R.id.button_9);
-//
-        buttonHistory.setOnClickListener(view -> {
 
+        //history button
+        buttonHistory.setOnClickListener(view -> {
+            //advance mode with history
             if(mode==0){
                 mode=1;
                 historyTV.setVisibility(View.VISIBLE);
@@ -58,13 +60,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 historyTV.setText("");
             }
             else {
+                //standard mode no history
                 mode=0;
                 historyTV.setVisibility(View.INVISIBLE);
                 buttonHistory.setText("ADVANCED - WITH HISTORY");
                 obj.calculatorHistory.clear();
                 obj.hisArrayIndex=0;
-                obj.joined="";
-                obj.hisJoinedString="";
+                obj.expression="";
+                obj.expressionHist="";
             }
         });
 
@@ -72,10 +75,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             inputTV.setText("0");
             obj.inputString.clear();
             obj.index=0;
-            obj.joined = "";
+            obj.expression = "";
         });
     }
-//assignid
+    //1) findViewByID for each button
+    //2) set on click listener for each button
     void assignId(MaterialButton btn, int id){
         btn = findViewById(id);
         btn.setOnClickListener(this);
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(buttonText.equals("=")){
             int result = obj.calculate();
             String resultString = String.valueOf(result);
-            inputTV.setText(obj.joined+" = " +obj.solution);
+            inputTV.setText(obj.expression+" = " +obj.solution);
 
             if(mode==1){
                 obj.storeHistory();
@@ -102,15 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         else{
-            // Getting text of the button pressed
+            // Get the text of the button pressed
             String data = ((MaterialButton) v).getText().toString();
             obj.push(data);
-            inputTV.setText(obj.joined);
+            inputTV.setText(obj.expression);
 
         }
-
     }
-
-
-
 }

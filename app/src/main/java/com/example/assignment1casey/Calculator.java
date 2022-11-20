@@ -9,27 +9,35 @@ public class Calculator {
     int result = 0;
     int solution = 0;
     int hisArrayIndex = 0;
-    String joined;
-    String hisJoinedString;
+    String expression;
+    String expressionHist;
 
+    //add expression into an array list
     public void push(String input) {
         inputString.add(index, input);
         index++;
-        joined = String.join("", inputString);
+        expression = String.join("", inputString);
     }
 
+    //calculator function
+    //takes two operands and an operator
+    //calculates the result depending on operator
     public int calc(int operand1, int operand2, String operator) {
 
         switch (operator) {
+            //addition
             case "+":
                 result = operand1 + operand2;
                 break;
+                //subtraction
             case "-":
                 result = operand1 - operand2;
                 break;
-            case "*":
+            //multiplication
+                case "*":
                 result = operand1 * operand2;
                 break;
+                //division
             case "/":
                 result = operand1 / operand2;
                 break;
@@ -37,6 +45,7 @@ public class Calculator {
         }
         return result;
     }
+    //calculate expression in the array list
     public int calculate() {
         for (int i = 0; i < inputString.size(); i++) {
             if ((inputString.get(i).equals("-")) ||
@@ -58,9 +67,10 @@ public class Calculator {
         return solution;
     }
 
+    //add to history
     public void storeHistory(){
-        hisJoinedString = joined+"="+solution;
-        calculatorHistory.add(hisArrayIndex, hisJoinedString+"\n");
+        expressionHist = expression+"="+solution;
+        calculatorHistory.add(hisArrayIndex, expressionHist+"\n");
         hisArrayIndex++;
     }
 
